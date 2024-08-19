@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <p id="demo"> </p>
+
+    </div>
+    <script>
+        const vehicleOne = {
+  brand: 'Ford',
+  model: 'Mustang',
+  type: 'car',
+  year: 2021, 
+  color: 'red',
+  registration: {
+    city: 'Houston',
+    state: 'Texas',
+    area: {
+    	home: 'amersinghpura',
+    },
+    country: 'USA'
+  }
+}
+
+myVehicle(vehicleOne)
+
+function myVehicle({ model, registration: { state }, registration: { area: { home } } } ) {
+//   const message = 'My ' + model + ' is registered in ' + state + area;
+  const message =` My  + ${model} + is registered in   ${state}, ${home};`
+
+  document.getElementById("demo").innerHTML = message;
+}
+
+    </script>
+</body>
+</html>

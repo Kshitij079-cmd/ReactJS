@@ -1,0 +1,25 @@
+const mongoose = require('mongoose')
+
+const MONGO_URI =
+"mongodbdatabaselink"
+const MOBILE_URI =
+    'mongodb+srv://owlhacking:mypassword@cluster0.lpqs0es.mongodb.net/Cluster0?retryWrites=true&w=majority'
+
+const connectDBs = () => {
+    try {
+        const qrCodeDb = mongoose.createConnection(MONGO_URI, {
+            useUnifiedTopology: true,
+            useNewUrlParser: true
+        })
+        const userDB = mongoose.createConnection(MOBILE_URI, {
+            useUnifiedTopology: true,
+            useNewUrlParser: true
+        })
+        return { qrCodeDb, userDB }
+    } catch (error) {
+        console.error(`Error:${error.message}`)
+        process.exit(1)
+    }
+}
+
+module.exports = { connectDBs }

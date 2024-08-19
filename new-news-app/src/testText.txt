@@ -1,0 +1,31 @@
+article = [];
+  constructor() {
+    super();
+    console.log(`"I am inside a constructor for Section's section"`);
+    this.state = {
+      article: this.article,
+     totalResults: 0
+    };
+  }
+   async fetchArticles(page) {
+    const { country, category } = this.props;
+    this.setState({
+      loading: true,
+    });
+    let url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=303ef28d80644b3da5d22ec73870c514&page=${page}`;
+    let newsData = await fetch(url);
+    let parseData = await newsData.json();
+    this.setState({
+      article: parseData.articles,
+      totalResults: parseData.totalResults,
+      loading: false,
+    });
+  }
+  async componentDidMount() {
+    await this.fetchArticles(this.state.page);
+  }
+
+  render(){ 
+               
+
+  }
